@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'PharmacyProductTracking';
+  title = 'BookStore';
   public isUserLoggedIn$?: Observable<boolean>;
 
   constructor(private _userService: UserService) {}
