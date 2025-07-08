@@ -37,4 +37,22 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._subscriptionList.forEach((sub: Subscription) => sub.unsubscribe());
   }
+
+  promoBooks = [
+    { title: 'Promo 1', image: 'assets/reclama.webp' },
+    { title: 'Promo 2', image: 'assets/promo2.jpg' },
+  ];
+
+  topBooks = [
+    {
+      title: 'Book A',
+      image: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
+    },
+    { title: 'Book B', image: 'assets/religie/Ecourile sufletului.jpg' },
+    { title: 'Book B', image: 'assets/religie/În fiecare zi cu Isus.jpg' },
+    { title: 'Book B', image: 'assets/religie/Ecourile sufletului.jpg' },
+    { title: 'Book B', image: 'assets/religie/Ecourile sufletului.jpg' },
+    { title: 'Book B', image: 'assets/religie/Ecourile sufletului.jpg' },
+    { title: 'Book B', image: 'assets/religie/Ecourile sufletului.jpg' },
+  ];
 }

@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { DialogBoxConfirmationComponent } from '../dialog-box-confirmation/dialog-box-confirmation.component';
 import { CommonService } from 'src/app/services/common.service';
-import { UserInterface } from 'src/app/models/user.model';
 import { UpdateUsernameComponent } from 'src/app/modules/authentication/components/update-username/update-username.component';
 
 @Component({
@@ -14,7 +13,8 @@ import { UpdateUsernameComponent } from 'src/app/modules/authentication/componen
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public authenticatedUser$: Observable<string>;
+  searchTerm: string = '';
+  authenticatedUser$: Observable<string>;
 
   constructor(
     private _dialog: MatDialog,

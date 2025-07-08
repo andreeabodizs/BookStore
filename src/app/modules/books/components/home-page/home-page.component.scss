@@ -1,8 +1,10 @@
 .main-area {
   margin-top: 80px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 
   .description-container {
     width: 36%;
@@ -29,4 +31,37 @@
       font-size: xx-large;
     }
   }
+}
+
+.shipping-info-container {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 100px;
+  background-color: white;
+  max-width: 1200px;
+}
+
+.shipping-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.shipping-icon {
+  margin-top: 30px;
+  height: 100px;
+  align-self: center;
+  width: fit-content;
+  font-size: 60px;
+  color: var(--deep-purple);
+}
+
+.shipping-text {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
 }
