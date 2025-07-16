@@ -12,6 +12,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -28,6 +33,11 @@ import { MatCardModule } from '@angular/material/card';
     MatSortModule,
     MatToolbarModule,
     MatCardModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatTooltipModule,
   ],
   exports: [
     MatIconModule,
@@ -43,6 +53,11 @@ import { MatCardModule } from '@angular/material/card';
     MatSortModule,
     MatToolbarModule,
     MatCardModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}

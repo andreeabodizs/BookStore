@@ -6,44 +6,44 @@ import { Router } from '@angular/router';
 export class CommonService {
   constructor(private _snackBar: MatSnackBar, private _router: Router) {}
 
-  public showSnackBarSuccess(message: string) {
+  showSnackBarSuccess(message: string) {
     this._snackBar.open(message, 'OK', {
       duration: 5000,
       panelClass: ['green-snackbar'],
     });
   }
-  public showSnackBarError(message: string) {
+  showSnackBarError(message: string) {
     this._snackBar.open(message, 'OK', {
       duration: 5000,
       panelClass: ['red-snackbar'],
     });
   }
 
-  public goToHomePage() {
-    this._router.navigate(['/access/home']);
+  goToHomePage() {
+    this._router.navigate(['']);
   }
 
-  public goToDisplayProducts() {
-    this._router.navigate(['/access/products']);
+  goToBooks() {
+    this._router.navigate(['/books']);
   }
 
-  public goToCreateProduct() {
-    this._router.navigate(['/access/add']);
+  goToSpecificBook(bookId: string) {
+    this._router.navigate([`/book/${bookId}`]);
   }
 
-  public goToUpdateProduct(pzn: string) {
-    this._router.navigate([`/access/edit/${pzn}`]);
+  goToCart() {
+    this._router.navigate([`/cart`]);
   }
 
-  public gotToUpdateUserPage() {
-    this._router.navigate([`/update-user`]);
+  goToLoginPage() {
+    this._router.navigate(['/auth/login']);
   }
 
-  public goToLoginPage() {
-    this._router.navigate(['/login']);
+  goToRegisterPage() {
+    this._router.navigate(['/auth/register']);
   }
 
-  public goToRegisterPage() {
-    this._router.navigate(['/register']);
+  gotToCheckout() {
+    this._router.navigate(['cart/checkout']);
   }
 }

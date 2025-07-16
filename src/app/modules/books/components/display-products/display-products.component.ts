@@ -64,7 +64,7 @@ export class DisplayProductsComponent implements OnInit, OnDestroy {
     this._subscriptionList.forEach((sub: Subscription) => sub.unsubscribe());
   }
   public goToCreateProduct() {
-    this._commonService.goToCreateProduct();
+    this._commonService.goToCart();
   }
   public openDialog(product: ProductInterface): void {
     this._dialog.open(StockPageComponent, {
@@ -73,7 +73,7 @@ export class DisplayProductsComponent implements OnInit, OnDestroy {
   }
 
   public editProductandStock(pzn: string): void {
-    this._commonService.goToUpdateProduct(pzn);
+    this._commonService.goToSpecificBook(pzn);
   }
 
   public deleteProductAndStock(pzn: string): void {

@@ -26,13 +26,19 @@ export class HeaderComponent {
     );
   }
 
-  public goToHomePage() {
+  goToHomePage() {
     this._commonService.goToHomePage();
   }
-  public goToProducts() {
-    this._commonService.goToDisplayProducts();
+
+  goToBooks() {
+    this._commonService.goToBooks();
   }
-  public openLogoutDialog() {
+
+  goToCart() {
+    this._commonService.goToCart();
+  }
+
+  openLogoutDialog() {
     const dialogRef = this._dialog.open(DialogBoxConfirmationComponent, {
       data: { message: 'Are you sure you want to log out?' },
     });
@@ -43,11 +49,11 @@ export class HeaderComponent {
     });
   }
 
-  public openUpdateUsernameDialog() {
+  openUpdateUsernameDialog() {
     this._dialog.open(UpdateUsernameComponent);
   }
 
-  public openChangePasswordDialog() {
+  openChangePasswordDialog() {
     this._dialog.open(ChangePasswordComponent);
   }
 }

@@ -12,6 +12,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './modules/material.module';
+import { registerLocaleData } from '@angular/common';
+import localeRo from '@angular/common/locales/ro';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(localeRo);
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, DialogBoxConfirmationComponent],
@@ -29,6 +33,7 @@ import { MaterialModule } from './modules/material.module';
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'ro' },
   ],
   bootstrap: [AppComponent],
 })

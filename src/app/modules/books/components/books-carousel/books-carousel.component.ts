@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Book } from 'src/app/models/book.model';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-books-carousel',
@@ -6,17 +8,23 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./books-carousel.component.scss'],
 })
 export class BooksCarouselComponent {
-  @Input() books: { title: string; image: string }[] = [];
+  @Input() books: Book[] = [];
   @Input() mode: 'single' | 'multi' = 'single'; // single = imagine mare, multi = 5 cărți
   currentSlide = 0;
 
-  nextSlide() {
+  constructor(private _commonService: CommonService) {}
+
+  nextSlide(): void {
     const maxIndex =
       this.mode === 'multi' ? this.books.length - 5 : this.books.length - 1;
     if (this.currentSlide < maxIndex) this.currentSlide++;
   }
 
-  prevSlide() {
+  prevSlide(): void {
     if (this.currentSlide > 0) this.currentSlide--;
+  }
+
+  goToSpecificBook(bookId: string): void {
+    this._commonService.goToSpecificBook(bookId);
   }
 }

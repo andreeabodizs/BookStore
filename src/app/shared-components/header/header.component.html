@@ -14,7 +14,7 @@
         <mat-icon>keyboard_arrow_down</mat-icon>
       </button>
       <mat-menu #books="matMenu">
-        <button mat-menu-item (click)="goToHomePage()">
+        <button mat-menu-item (click)="goToBooks()">
           <span>Dragoste</span>
           <span class="mat-button-focus-overlay"></span>
         </button>
@@ -24,10 +24,10 @@
         </button>
       </mat-menu>
 
-      <button mat-button class="books-button" (click)="goToProducts()">
+      <button mat-button class="books-button" (click)="goToBooks()">
         Bestsellere
       </button>
-      <button mat-button class="books-button" (click)="goToProducts()">
+      <button mat-button class="books-button" (click)="goToBooks()">
         Oferte
       </button>
     </div>
@@ -61,7 +61,7 @@
     <button mat-button>
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-button>
+    <button mat-button (click)="goToCart()">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </div>

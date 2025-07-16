@@ -35,7 +35,7 @@ export class CreateProductComponent implements OnInit {
     this._getPznFromRoute();
   }
   public goToProducts() {
-    this._commonService.goToDisplayProducts();
+    this._commonService.goToCart();
   }
   // accessed by click on save button
   public submitForms(): void {
@@ -53,7 +53,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   public editProductandStock(pzn: string): void {
-    this._commonService.goToUpdateProduct(pzn);
+    this._commonService.goToSpecificBook(pzn);
   }
 
   private _createProductForm(): void {
@@ -107,7 +107,7 @@ export class CreateProductComponent implements OnInit {
   private _getPznFromRoute(): void {
     this._activatedRoute.params.subscribe((params: Params) => {
       if (!params.id) {
-        this._commonService.goToCreateProduct();
+        this._commonService.goToCart();
       } else {
         this._getProductByPzn(params.id);
       }

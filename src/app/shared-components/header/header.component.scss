@@ -4,7 +4,7 @@ mat-toolbar {
   flex-direction: row;
   justify-content: space-between;
   gap: 200px;
-  padding: 8px 24px;
+  padding: 8px 60px;
 
   .logo {
     width: 200px;
@@ -25,19 +25,17 @@ mat-toolbar {
 
   .bookloop-content {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    flex-direction: row;
+    gap: 40px;
 
-    .books {
-      height: 50%;
-
-      .books-button {
-        font-size: large;
-        letter-spacing: 1px;
-      }
+    .books-button {
+      font-size: large;
+      cursor: pointer;
+      letter-spacing: 1px;
     }
 
     .custom-search-bar {
+      cursor: pointer;
       width: 100%;
       max-width: 600px;
       height: 36px;

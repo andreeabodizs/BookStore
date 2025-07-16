@@ -9,24 +9,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { StockService } from 'src/app/services/stock.service';
 import { CommonService } from 'src/app/services/common.service';
-import { UserGuard } from 'src/app/guards/login.guard';
+// import { UserGuard } from 'src/app/guards/login.guard';
 import { MaterialModule } from '../material.module';
 import { BooksCarouselComponent } from './components/books-carousel/books-carousel.component';
-
-const routes: Routes = [
-  { path: 'home', canActivate: [UserGuard], component: HomePageComponent },
-  {
-    path: 'products',
-    canActivate: [UserGuard],
-    component: DisplayProductsComponent,
-  },
-  { path: 'add', canActivate: [UserGuard], component: CreateProductComponent },
-  {
-    path: 'edit/:id',
-    canActivate: [UserGuard],
-    component: CreateProductComponent,
-  },
-];
+import { BookListComponent } from './components/book-list/book-list.component';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+import { BooksRoutingModule } from './books-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,15 +24,17 @@ const routes: Routes = [
     HomePageComponent,
     StockPageComponent,
     BooksCarouselComponent,
+    BookListComponent,
+    BookDetailComponent,
+    ActionButtonsComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
+    BooksRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
   ],
   providers: [ProductService, StockService, CommonService],
-  exports: [RouterModule],
 })
 export class BooksModule {}
