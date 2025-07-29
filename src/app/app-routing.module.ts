@@ -12,9 +12,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/books/books.module').then(
-        (module) => module.BooksModule
-      ),
+      import('./modules/book/book.module').then((module) => module.BookModule),
   },
   {
     path: 'cart',

@@ -1,0 +1,18 @@
+<div class="book-grid">
+  <div class="book-card" *ngFor="let book of books">
+    <img
+      [src]="book.coverUrl"
+      [alt]="book.title"
+      (click)="goToSpecificBook(book.bookId)"
+    />
+    <h3>{{ book.title }}</h3>
+    <p>Autor: {{ book.author }}</p>
+    <p>Preț: {{ book.price | currency : "RON" : "code" }}</p>
+
+    <app-action-buttons
+      [isFavorite]="book.isFavorite"
+      (addToCart)="addToCart(book)"
+      (toggleFavorite)="toggleFavorite(book)"
+    ></app-action-buttons>
+  </div>
+</div>

@@ -1,4 +1,3 @@
-import { ProductInterface } from './../models/product.model';
 import { CommonService } from 'src/app/services/common.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';

@@ -3,12 +3,14 @@ export interface Book {
   title: string;
   author: string;
   price: number;
-  cover: string;
+  coverUrl: string;
   category: string;
   quantity: number;
   description: string;
   inStock: boolean;
+  isNew: boolean;
+  isBestseller: boolean;
   isFavorite: boolean;
   giftWrap?: boolean;
-  promoImage?: string;
+  promoImageUrl?: string;
 }
