@@ -1,13 +1,12 @@
 export interface Book {
   bookId: string;
-  title: string;
+  bookName: string;
   author: string;
-  price: number;
+  currentPrice: number;
   coverUrl: string;
   category: string;
   quantity: number;
   description: string;
-  inStock: boolean;
   isNew: boolean;
   isBestseller: boolean;
   isFavorite: boolean;

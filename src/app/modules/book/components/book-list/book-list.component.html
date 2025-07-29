@@ -2,12 +2,12 @@
   <div class="book-card" *ngFor="let book of books">
     <img
       [src]="book.coverUrl"
-      [alt]="book.title"
+      [alt]="book.bookName"
       (click)="goToSpecificBook(book.bookId)"
     />
-    <h3>{{ book.title }}</h3>
+    <h3>{{ book.bookName }}</h3>
     <p>Autor: {{ book.author }}</p>
-    <p>Preț: {{ book.price | currency : "RON" : "code" }}</p>
+    <p>Preț: {{ book.currentPrice | currency : "RON" : "code" }}</p>
 
     <app-action-buttons
       [isFavorite]="book.isFavorite"

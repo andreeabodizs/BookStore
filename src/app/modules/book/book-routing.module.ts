@@ -9,7 +9,8 @@ const routes: Routes = [
     path: '',
     component: HomePageComponent,
   },
-  { path: 'books', component: BookListComponent },
+  { path: 'books/bestsellere', component: BookListComponent },
+  { path: 'books/:categoryCode', component: BookListComponent },
   { path: 'book/:id', component: BookDetailComponent },
 ];
 

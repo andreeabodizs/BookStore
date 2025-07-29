@@ -12,7 +12,7 @@ export class CartSummaryComponent {
 
   get totalProductsPrice(): number {
     return this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.currentPrice * item.quantity,
       0
     );
   }

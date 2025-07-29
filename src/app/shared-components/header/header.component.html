@@ -14,22 +14,20 @@
         <mat-icon>keyboard_arrow_down</mat-icon>
       </button>
       <mat-menu #books="matMenu">
-        <button mat-menu-item (click)="goToBooks()">
-          <span>Dragoste</span>
-          <span class="mat-button-focus-overlay"></span>
-        </button>
-        <button mat-menu-item (click)="goToHomePage()">
-          <span>Aventură</span>
+        <button
+          mat-menu-item
+          *ngFor="let category of categories"
+          (click)="goToBooks(category)"
+        >
+          <span>{{ category.categoryName }}</span>
           <span class="mat-button-focus-overlay"></span>
         </button>
       </mat-menu>
 
-      <button mat-button class="books-button" (click)="goToBooks()">
+      <button mat-button class="books-button" (click)="goToBestsellers()">
         Bestsellere
       </button>
-      <button mat-button class="books-button" (click)="goToBooks()">
-        Oferte
-      </button>
+      <button mat-button class="books-button">Oferte</button>
     </div>
 
     <div class="custom-search-bar">

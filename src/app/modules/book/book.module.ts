@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StockService } from 'src/app/services/category.service';
 import { CommonService } from 'src/app/services/common.service';
 // import { UserGuard } from 'src/app/guards/login.guard';
 import { MaterialModule } from '../material.module';
@@ -12,6 +11,7 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { BooksRoutingModule } from './book-routing.module';
 import { BookService } from 'src/app/services/book.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,6 @@ import { BookService } from 'src/app/services/book.service';
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [BookService, StockService, CommonService],
+  providers: [BookService, CategoryService, CommonService],
 })
 export class BookModule {}

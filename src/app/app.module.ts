@@ -15,6 +15,7 @@ import { MaterialModule } from './modules/material.module';
 import { registerLocaleData } from '@angular/common';
 import localeRo from '@angular/common/locales/ro';
 import { LOCALE_ID } from '@angular/core';
+import { CategoryService } from './services/category.service';
 registerLocaleData(localeRo);
 
 @NgModule({

@@ -1,8 +1,8 @@
 <div class="cart-item">
-  <img [src]="item.coverUrl" alt="{{ item.title }}" class="book-cover" />
+  <img [src]="item.coverUrl" alt="{{ item.bookName }}" class="book-cover" />
 
   <div class="book-info">
-    <div class="title">{{ item.title }}</div>
+    <div class="title">{{ item.bookName }}</div>
     <button class="remove-btn" (click)="onRemove()">
       <mat-icon>delete</mat-icon> <span class="remove-label"></span>Șterge
     </button>

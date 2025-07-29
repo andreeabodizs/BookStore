@@ -23,11 +23,11 @@ export class BookService {
     return this.httpClient.get(`${this.baseUrl}/${bookId}`) as Observable<Book>;
   }
 
-  getNewBooks(): Observable<Book[]> {
+  getNewBooksUsingGET(): Observable<Book[]> {
     return this.httpClient.get(`${this.baseUrl}/new`) as Observable<Book[]>;
   }
 
-  getBestsellers(): Observable<Book[]> {
+  getBestsellersUsingGET(): Observable<Book[]> {
     return this.httpClient.get(`${this.baseUrl}/bestsellers`) as Observable<
       Book[]
     >;
@@ -51,5 +51,11 @@ export class BookService {
     return this.httpClient.delete(
       `${this.baseUrl}/delete/${bookId}`
     ) as Observable<Book>;
+  }
+
+  getBooksByCategoryCodeUsingGET(categoryCode: string): Observable<Book[]> {
+    return this.httpClient.get(
+      `${this.baseUrl}/category/${categoryCode}`
+    ) as Observable<Book[]>;
   }
 }

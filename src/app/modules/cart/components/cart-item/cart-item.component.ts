@@ -23,7 +23,7 @@ export class CartItemComponent {
   }
 
   getTotalPrice(): number {
-    return this.item.quantity * this.item.price;
+    return this.item.quantity * this.item.currentPrice;
   }
 
   onQuantityChange(event: Event): void {

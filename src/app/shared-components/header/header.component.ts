@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 import { DialogBoxConfirmationComponent } from '../dialog-box-confirmation/dialog-box-confirmation.component';
 import { CommonService } from 'src/app/services/common.service';
 import { UpdateUsernameComponent } from 'src/app/modules/authentication/components/update-username/update-username.component';
+import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-header',
@@ -15,45 +17,63 @@ import { UpdateUsernameComponent } from 'src/app/modules/authentication/componen
 export class HeaderComponent {
   searchTerm: string = '';
   authenticatedUser$: Observable<string>;
+  categories: Category[] = [];
 
   constructor(
-    private _dialog: MatDialog,
-    private _userService: UserService,
-    private _commonService: CommonService
+    private dialog: MatDialog,
+    private userService: UserService,
+    private commonService: CommonService,
+    private categoryService: CategoryService
   ) {
-    this.authenticatedUser$ = this._userService.authenticatedUser$.pipe(
+    this.authenticatedUser$ = this.userService.authenticatedUser$.pipe(
       map((user) => user.username!)
     );
+    this.getAllCategroies();
+  }
+
+  getAllCategroies(): void {
+    this.categoryService.getAllCategoriesUsingGET().subscribe({
+      next: (data) => {
+        this.categories = data;
+      },
+      error: (err) => {
+        console.error('Eroare la obținerea categoriilor:', err);
+      },
+    });
   }
 
   goToHomePage() {
-    this._commonService.goToHomePage();
+    this.commonService.goToHomePage();
   }
 
-  goToBooks() {
-    this._commonService.goToBooks();
+  goToBooks(category: Category) {
+    this.commonService.goToBooks(category);
   }
 
   goToCart() {
-    this._commonService.goToCart();
+    this.commonService.goToCart();
   }
 
   openLogoutDialog() {
-    const dialogRef = this._dialog.open(DialogBoxConfirmationComponent, {
+    const dialogRef = this.dialog.open(DialogBoxConfirmationComponent, {
       data: { message: 'Are you sure you want to log out?' },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 'yes') {
-        this._userService.logoutUsingPOST();
+        this.userService.logoutUsingPOST();
       }
     });
   }
 
   openUpdateUsernameDialog() {
-    this._dialog.open(UpdateUsernameComponent);
+    this.dialog.open(UpdateUsernameComponent);
   }
 
   openChangePasswordDialog() {
-    this._dialog.open(ChangePasswordComponent);
+    this.dialog.open(ChangePasswordComponent);
+  }
+
+  goToBestsellers() {
+    this.commonService.goToBestsellers();
   }
 }

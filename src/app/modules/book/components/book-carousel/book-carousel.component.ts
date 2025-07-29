@@ -12,7 +12,7 @@ export class BookCarouselComponent {
   @Input() mode: 'single' | 'multi' = 'single'; // single = imagine mare, multi = 5 cărți
   currentSlide = 0;
 
-  constructor(private _commonService: CommonService) {}
+  constructor(private commonService: CommonService) {}
 
   nextSlide(): void {
     const maxIndex =
@@ -25,6 +25,6 @@ export class BookCarouselComponent {
   }
 
   goToSpecificBook(bookId: string): void {
-    this._commonService.goToSpecificBook(bookId);
+    this.commonService.goToSpecificBook(bookId);
   }
 }

@@ -12,28 +12,28 @@ export class ProductsComponent {
   cartItems: Book[] = [
     {
       bookId: '1',
-      title: 'Când toate ți se dau pe deasupra',
+      bookName: 'Când toate ți se dau pe deasupra',
       author: 'George Orwell',
-      price: 29.99,
+      currentPrice: 29.99,
       coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
       category: 'Ficțiune',
       quantity: 10,
       description: 'Un roman distopic clasic despre supravegherea totalitară.',
-      inStock: true,
+
       isFavorite: false,
       isBestseller: true,
       isNew: true,
     },
     {
       bookId: '2',
-      title: 'Când toate ți se dau pe deasupra',
+      bookName: 'Când toate ți se dau pe deasupra',
       author: 'Jane Austen',
-      price: 24.99,
+      currentPrice: 24.99,
       coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
       category: 'Romantism',
       quantity: 5,
       description: 'O poveste clasică despre dragoste și societate.',
-      inStock: true,
+
       isFavorite: true,
       isBestseller: true,
       isNew: true,
@@ -59,7 +59,7 @@ export class ProductsComponent {
 
   get totalProductsPrice(): number {
     return this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.currentPrice * item.quantity,
       0
     );
   }

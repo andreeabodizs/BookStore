@@ -17,11 +17,11 @@
           [ngClass]="{ 'multi-slide': mode === 'multi' }"
         >
           <img
-            [src]="book.coverUrl"
-            [alt]="book.title"
+            [src]="mode === 'single' ? book.promoImageUrl : book.coverUrl"
+            [alt]="book.bookName"
             (click)="goToSpecificBook(book.bookId)"
           />
-          <h4 *ngIf="mode === 'multi'">{{ book.title }}</h4>
+          <h4 *ngIf="mode === 'multi'">{{ book.bookName }}</h4>
         </div>
       </div>
     </div>

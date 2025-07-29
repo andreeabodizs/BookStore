@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book.model';
+import { BookService } from 'src/app/services/book.service';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
@@ -9,295 +10,47 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent {
-  books: Book[] = [
-    {
-      bookId: '1',
-      title: '1984',
-      author: 'George Orwell',
-      price: 29.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune',
-      quantity: 10,
-      description: 'Un roman distopic clasic despre supravegherea totalitară.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '2',
-      title: 'Mândrie și prejudecată',
-      author: 'Jane Austen',
-      price: 24.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Romantism',
-      quantity: 5,
-      description: 'O poveste clasică despre dragoste și societate.',
-      inStock: true,
-      isFavorite: true,
-      isBestseller: true,
-      isNew: true,
-    },
-    {
-      bookId: '3',
-      title: 'Micul Prinț',
-      author: 'Antoine de Saint-Exupéry',
-      price: 19.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură pentru copii',
-      quantity: 12,
-      description: 'O poveste filosofică plină de simboluri și învățăminte.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '4',
-      title: 'Toate păsările cântă',
-      author: 'Evie Wyld',
-      price: 34.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Dramă',
-      quantity: 7,
-      description: 'Un roman emoționant despre viață și trecut.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '5',
-      title: 'Kafka pe malul mării',
-      author: 'Haruki Murakami',
-      price: 39.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune contemporană',
-      quantity: 4,
-      description: 'O poveste complexă despre destin și identitate.',
-      inStock: false,
-      isFavorite: true,
-      isBestseller: true,
-      isNew: true,
-    },
-    {
-      bookId: '6',
-      title: 'Amintiri din copilărie',
-      author: 'Ion Creangă',
-      price: 14.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură română',
-      quantity: 20,
-      description: 'Povești pline de farmec și umor din copilăria autorului.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '7',
-      title: 'Crimă și pedeapsă',
-      author: 'Fiodor Dostoievski',
-      price: 35.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Clasică',
-      quantity: 3,
-      description: 'Un roman psihologic despre vină și răscumpărare.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '8',
-      title: 'Enigma Otiliei',
-      author: 'George Călinescu',
-      price: 22.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură română',
-      quantity: 6,
-      description:
-        'Un roman despre dragoste și destin în Bucureștiul interbelic.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '9',
-      title: 'Pădurea spânzuraților',
-      author: 'Liviu Rebreanu',
-      price: 28.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură română',
-      quantity: 8,
-      description: 'O poveste despre război și conștiință morală.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '10',
-      title: 'Fahrenheit 451',
-      author: 'Ray Bradbury',
-      price: 26.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Science Fiction',
-      quantity: 10,
-      description: 'Un roman distopic despre cenzură și controlul informației.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '11',
-      title: 'Alchimistul',
-      author: 'Paulo Coelho',
-      price: 18.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune spirituală',
-      quantity: 15,
-      description: 'O poveste despre urmarea viselor și destin.',
-      inStock: true,
-      isFavorite: true,
-      isBestseller: true,
-      isNew: true,
-    },
-    {
-      bookId: '12',
-      title: 'Cel mai iubit dintre pământeni',
-      author: 'Marin Preda',
-      price: 32.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură română',
-      quantity: 7,
-      description: 'Un roman emblematic despre perioada comunistă.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '13',
-      title: 'Jane Eyre',
-      author: 'Charlotte Brontë',
-      price: 27.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Clasică',
-      quantity: 5,
-      description:
-        'Povestea unei orfane care devine guvernantă și găsește dragostea.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '14',
-      title: 'Furtuna',
-      author: 'William Shakespeare',
-      price: 20.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Teatru',
-      quantity: 12,
-      description: 'O piesă despre magie, iertare și putere.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '15',
-      title: 'Lolita',
-      author: 'Vladimir Nabokov',
-      price: 31.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune controversată',
-      quantity: 4,
-      description: 'Un roman despre obsesie și moralitate.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '16',
-      title: 'O mie nouă sute optzeci și patru',
-      author: 'George Orwell',
-      price: 29.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune',
-      quantity: 9,
-      description: 'Un alt titlu pentru 1984, o distopie clasică.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '17',
-      title: 'Război și pace',
-      author: 'Lev Tolstoi',
-      price: 45.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Clasică',
-      quantity: 3,
-      description: 'Un roman epic despre viață și război în Rusia.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '18',
-      title: 'Cel care aleargă după vânt',
-      author: 'Carlos Ruiz Zafón',
-      price: 22.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Ficțiune',
-      quantity: 6,
-      description: 'O poveste despre mister și aventură în Barcelona.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-    {
-      bookId: '19',
-      title: 'Mizerabilii',
-      author: 'Victor Hugo',
-      price: 38.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Clasică',
-      quantity: 7,
-      description: 'O epopee despre justiție, iubire și sacrificiu.',
-      inStock: true,
-      isFavorite: true,
-      isBestseller: true,
-      isNew: true,
-    },
-    {
-      bookId: '20',
-      title: 'Amintiri din copilărie',
-      author: 'Ion Creangă',
-      price: 16.99,
-      coverUrl: 'assets/religie/Când toate ți se dau pe deasupra.jpg',
-      category: 'Literatură română',
-      quantity: 11,
-      description: 'O colecție de povești populare și amintiri dragi.',
-      inStock: true,
-      isFavorite: false,
-      isBestseller: true,
-      isNew: false,
-    },
-  ];
+  categoryCode!: string;
+  books: Book[] = [];
 
-  constructor(private _commonService: CommonService) {}
+  constructor(
+    private commonService: CommonService,
+    private route: ActivatedRoute,
+    private bookService: BookService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const navigation = this.router.getCurrentNavigation();
+      const isBestseller =
+        navigation?.extras.state?.isBestseller || history.state.isBestseller;
+      const categoryCode = params.get('categoryCode');
+      if (isBestseller) {
+        this.loadBestsellers();
+      } else if (categoryCode) {
+        this.categoryCode = categoryCode;
+        this.loadBooksByCategoryCode(categoryCode);
+      }
+    });
+  }
+
+  loadBestsellers(): void {
+    this.bookService.getBestsellersUsingGET().subscribe((books: Book[]) => {
+      this.books = books;
+    });
+  }
+
+  loadBooksByCategoryCode(categoryCode: string): void {
+    this.bookService
+      .getBooksByCategoryCodeUsingGET(categoryCode)
+      .subscribe((books) => {
+        this.books = books;
+      });
+  }
 
   addToCart(book: Book) {
-    console.log(`${book.title} adăugat în coș.`);
+    console.log(`${book.bookName} adăugat în coș.`);
   }
 
   toggleFavorite(book: Book) {
@@ -305,6 +58,6 @@ export class BookListComponent {
   }
 
   goToSpecificBook(bookId: string) {
-    this._commonService.goToSpecificBook(bookId);
+    this.commonService.goToSpecificBook(bookId);
   }
 }

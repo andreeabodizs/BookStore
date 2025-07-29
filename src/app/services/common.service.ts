@@ -1,49 +1,56 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from '../models/category.model';
 
 @Injectable({ providedIn: 'root' })
 export class CommonService {
-  constructor(private _snackBar: MatSnackBar, private _router: Router) {}
+  constructor(private snackBar: MatSnackBar, private router: Router) {}
 
   showSnackBarSuccess(message: string) {
-    this._snackBar.open(message, 'OK', {
+    this.snackBar.open(message, 'OK', {
       duration: 5000,
       panelClass: ['green-snackbar'],
     });
   }
   showSnackBarError(message: string) {
-    this._snackBar.open(message, 'OK', {
+    this.snackBar.open(message, 'OK', {
       duration: 5000,
       panelClass: ['red-snackbar'],
     });
   }
 
   goToHomePage() {
-    this._router.navigate(['']);
+    this.router.navigate(['']);
   }
 
-  goToBooks() {
-    this._router.navigate(['/books']);
+  goToBooks(category: Category) {
+    this.router.navigate(['/books', category.categoryCode]);
   }
 
   goToSpecificBook(bookId: string) {
-    this._router.navigate([`/book/${bookId}`]);
+    this.router.navigate([`/book/${bookId}`]);
   }
 
   goToCart() {
-    this._router.navigate([`/cart`]);
+    this.router.navigate([`/cart`]);
   }
 
   goToLoginPage() {
-    this._router.navigate(['/auth/login']);
+    this.router.navigate(['/auth/login']);
   }
 
   goToRegisterPage() {
-    this._router.navigate(['/auth/register']);
+    this.router.navigate(['/auth/register']);
   }
 
   gotToCheckout() {
-    this._router.navigate(['cart/checkout']);
+    this.router.navigate(['cart/checkout']);
+  }
+
+  goToBestsellers() {
+    this.router.navigate(['/books/bestsellere'], {
+      state: { isBestseller: true },
+    });
   }
 }
